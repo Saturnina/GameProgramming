@@ -26,6 +26,7 @@ namespace AN
             Content.RootDirectory = "Content";
             System.Console.WriteLine("Hello, World!");
             System.Console.WriteLine("Hello, World!");
+            System.Console.WriteLine("Hello, World!");
         }
 
         /// <summary>
