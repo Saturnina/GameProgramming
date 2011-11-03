@@ -28,9 +28,14 @@ namespace AN
 
 
             graphics = new GraphicsDeviceManager(this);
-            graphics.GraphicsProfile = GraphicsProfile.Reach;
+            
             Content.RootDirectory = "Content";
-            fbDeprofiler.DeProfiler.Run();
+            /*
+             * ONLY UNCOMMENT THESE IF YOU HAVE FBBDEPROFILER DOWNLOADED, AND IN THE REFERENCES!
+             * -noemj
+             */
+            //graphics.GraphicsProfile = GraphicsProfile.Reach;
+            //fbDeprofiler.DeProfiler.Run();
 
         }
 
@@ -68,7 +73,7 @@ namespace AN
 
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            myTexture = Content.Load<Texture2D>("mytexture");
+            myTexture = Content.Load<Texture2D>("maa");
 
             // TODO: use this.Content to load your game content here
         }
