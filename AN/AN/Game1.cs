@@ -22,8 +22,16 @@ namespace AN
 
         public Game1()
         {
+      
+
+
+
+
             graphics = new GraphicsDeviceManager(this);
+            graphics.GraphicsProfile = GraphicsProfile.Reach;
             Content.RootDirectory = "Content";
+            fbDeprofiler.DeProfiler.Run();
+
         }
 
         /// <summary>
@@ -39,14 +47,28 @@ namespace AN
             base.Initialize();
         }
 
+
+        // This is a texture we can render.
+        Texture2D myTexture;
+
+        // Set the coordinates to draw the sprite at.
+        Vector2 spritePosition = Vector2.Zero;
+
+        // Store some information about the sprite's motion.
+        Vector2 spriteSpeed = new Vector2(50.0f, 50.0f);
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
+        /// 
+
         protected override void LoadContent()
         {
+
+
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            myTexture = Content.Load<Texture2D>("mytexture");
 
             // TODO: use this.Content to load your game content here
         }
@@ -82,9 +104,12 @@ namespace AN
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            // Draw the sprite.
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
+            spriteBatch.Draw(myTexture, spritePosition, Color.White);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
