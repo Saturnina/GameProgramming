@@ -34,8 +34,8 @@ namespace AN
              * ONLY UNCOMMENT THESE IF YOU HAVE FBBDEPROFILER DOWNLOADED, AND IN THE REFERENCES!
              * -noemj
              */
-            //graphics.GraphicsProfile = GraphicsProfile.Reach;
-            //fbDeprofiler.DeProfiler.Run();
+            graphics.GraphicsProfile = GraphicsProfile.Reach;
+            fbDeprofiler.DeProfiler.Run();
 
         }
 
@@ -94,13 +94,41 @@ namespace AN
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+            // Move the sprite by speed, scaled by elapsed time.
+            spritePosition +=
+                spriteSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            // TODO: Add your update logic here
-            
-            base.Update(gameTime);
+            int MaxX =
+                graphics.GraphicsDevice.Viewport.Width - myTexture.Width;
+            int MinX = 0;
+            int MaxY =
+                graphics.GraphicsDevice.Viewport.Height - myTexture.Height;
+            int MinY = 0;
+
+            // Check for bounce.
+            if (spritePosition.X > MaxX)
+            {
+                spriteSpeed.X *= -1;
+                spritePosition.X = MaxX;
+            }
+
+            else if (spritePosition.X < MinX)
+            {
+                spriteSpeed.X *= -1;
+                spritePosition.X = MinX;
+            }
+
+            if (spritePosition.Y > MaxY)
+            {
+                spriteSpeed.Y *= -1;
+                spritePosition.Y = MaxY;
+            }
+
+            else if (spritePosition.Y < MinY)
+            {
+                spriteSpeed.Y *= -1;
+                spritePosition.Y = MinY;
+            }
         }
 
         /// <summary>
