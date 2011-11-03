@@ -16,6 +16,7 @@ namespace AN
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
@@ -23,6 +24,8 @@ namespace AN
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            System.Console.WriteLine("Hello, World!");
+            System.Console.WriteLine("Hello, World!");
         }
 
         /// <summary>
@@ -71,7 +74,7 @@ namespace AN
                 this.Exit();
 
             // TODO: Add your update logic here
-
+            
             base.Update(gameTime);
         }
 
