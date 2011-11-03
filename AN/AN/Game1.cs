@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+
+
 namespace AN
 {
     /// <summary>
@@ -16,19 +18,24 @@ namespace AN
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Sprite mSprite;
+        Sprite mSpriteTwo;
+
+        Sprite mBackgroundOne;
+        Sprite mBackgroundTwo;
+        Sprite mBackgroundThree;
+        Sprite mBackgroundFour;
+        Sprite mBackgroundFive;
+
 
         public Game1()
         {
-      
-
-
-
 
             graphics = new GraphicsDeviceManager(this);
-            
+
             Content.RootDirectory = "Content";
             /*
              * ONLY UNCOMMENT THESE IF YOU HAVE FBBDEPROFILER DOWNLOADED, AND IN THE REFERENCES!
@@ -39,6 +46,8 @@ namespace AN
 
         }
 
+
+
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -48,13 +57,29 @@ namespace AN
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            mSprite = new Sprite();
+            mSpriteTwo = new Sprite();
+
+            mBackgroundOne = new Sprite();
+            mBackgroundOne.Scale = 2.0f;
+
+            mBackgroundTwo = new Sprite();
+            mBackgroundTwo.Scale = 2.0f;
+
+            mBackgroundThree = new Sprite();
+            mBackgroundThree.Scale = 2.0f;
+
+            mBackgroundFour = new Sprite();
+            mBackgroundFour.Scale = 2.0f;
+
+            mBackgroundFive = new Sprite();
+            mBackgroundFive.Scale = 2.0f;
 
             base.Initialize();
         }
 
 
-        // This is a texture we can render.
-        Texture2D myTexture;
+       
 
         // Set the coordinates to draw the sprite at.
         Vector2 spritePosition = Vector2.Zero;
@@ -69,13 +94,32 @@ namespace AN
 
         protected override void LoadContent()
         {
-
-
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            myTexture = Content.Load<Texture2D>("maa");
 
             // TODO: use this.Content to load your game content here
+            mSprite.LoadContent(this.Content, "birdy");
+            mSprite.Position = new Vector2(125, 245);
+
+            mSpriteTwo.LoadContent(this.Content, "birdy");
+            mSpriteTwo.Position.X = 300;
+            mSpriteTwo.Position.Y = 300;
+
+            mBackgroundOne.LoadContent(this.Content, "Background01");
+            mBackgroundOne.Position = new Vector2(0, 0);
+
+            mBackgroundTwo.LoadContent(this.Content, "Background02");
+            mBackgroundTwo.Position = new Vector2(mBackgroundOne.Position.X + mBackgroundOne.Size.Width, 0);
+
+            mBackgroundThree.LoadContent(this.Content, "Background03");
+            mBackgroundThree.Position = new Vector2(mBackgroundTwo.Position.X + mBackgroundTwo.Size.Width, 0);
+
+            mBackgroundFour.LoadContent(this.Content, "Background04");
+            mBackgroundFour.Position = new Vector2(mBackgroundThree.Position.X + mBackgroundThree.Size.Width, 0);
+
+            mBackgroundFive.LoadContent(this.Content, "Background05");
+            mBackgroundFive.Position = new Vector2(mBackgroundFour.Position.X + mBackgroundFour.Size.Width, 0);
+
         }
 
         /// <summary>
@@ -94,41 +138,48 @@ namespace AN
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Move the sprite by speed, scaled by elapsed time.
-            spritePosition +=
-                spriteSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            // Allows the game to exit
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+                this.Exit();
 
-            int MaxX =
-                graphics.GraphicsDevice.Viewport.Width - myTexture.Width;
-            int MinX = 0;
-            int MaxY =
-                graphics.GraphicsDevice.Viewport.Height - myTexture.Height;
-            int MinY = 0;
+            // TODO: Add your update logic here
 
-            // Check for bounce.
-            if (spritePosition.X > MaxX)
+
+            if (mBackgroundOne.Position.X < -mBackgroundOne.Size.Width)
             {
-                spriteSpeed.X *= -1;
-                spritePosition.X = MaxX;
+                mBackgroundOne.Position.X = mBackgroundFive.Position.X + mBackgroundFive.Size.Width;
             }
 
-            else if (spritePosition.X < MinX)
+            if (mBackgroundTwo.Position.X < -mBackgroundTwo.Size.Width)
             {
-                spriteSpeed.X *= -1;
-                spritePosition.X = MinX;
+                mBackgroundTwo.Position.X = mBackgroundOne.Position.X + mBackgroundOne.Size.Width;
             }
 
-            if (spritePosition.Y > MaxY)
+            if (mBackgroundThree.Position.X < -mBackgroundThree.Size.Width)
             {
-                spriteSpeed.Y *= -1;
-                spritePosition.Y = MaxY;
+                mBackgroundThree.Position.X = mBackgroundTwo.Position.X + mBackgroundTwo.Size.Width;
             }
 
-            else if (spritePosition.Y < MinY)
+            if (mBackgroundFour.Position.X < -mBackgroundFour.Size.Width)
             {
-                spriteSpeed.Y *= -1;
-                spritePosition.Y = MinY;
+                mBackgroundFour.Position.X = mBackgroundThree.Position.X + mBackgroundThree.Size.Width;
             }
+
+            if (mBackgroundFive.Position.X < -mBackgroundFive.Size.Width)
+            {
+                mBackgroundFive.Position.X = mBackgroundFour.Position.X + mBackgroundFour.Size.Width;
+            }
+
+            Vector2 aDirection = new Vector2(-1, 0);
+            Vector2 aSpeed = new Vector2(160, 0);
+
+            mBackgroundOne.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            mBackgroundTwo.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            mBackgroundThree.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            mBackgroundFour.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            mBackgroundFive.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            base.Update(gameTime);
         }
 
         /// <summary>
@@ -139,9 +190,17 @@ namespace AN
         {
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // Draw the sprite.
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
-            spriteBatch.Draw(myTexture, spritePosition, Color.White);
+            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+            mBackgroundOne.Draw(this.spriteBatch);
+            mBackgroundTwo.Draw(this.spriteBatch);
+            mBackgroundThree.Draw(this.spriteBatch);
+            mBackgroundFour.Draw(this.spriteBatch);
+            mBackgroundFive.Draw(this.spriteBatch);
+
+            mSprite.Draw(this.spriteBatch);
+            mSpriteTwo.Draw(this.spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
