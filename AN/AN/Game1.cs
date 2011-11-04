@@ -21,8 +21,9 @@ namespace AN
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Sprite mSprite;
-        Sprite mSpriteTwo;
+        //Sprite mSprite;
+        //Sprite mSpriteTwo;
+        Nerd nerd;
 
         Sprite mBackgroundOne;
         Sprite mBackgroundTwo;
@@ -57,8 +58,9 @@ namespace AN
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            mSprite = new Sprite();
-            mSpriteTwo = new Sprite();
+            nerd = new Nerd();
+            //mSprite = new Sprite();
+            //mSpriteTwo = new Sprite();
 
             mBackgroundOne = new Sprite();
             mBackgroundOne.Scale = 2.0f;
@@ -96,14 +98,17 @@ namespace AN
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            nerd.LoadContent(this.Content);
+            nerd.Position.X = 300;
+            nerd.Position.Y = 300;
 
             // TODO: use this.Content to load your game content here
-            mSprite.LoadContent(this.Content, "birdy");
-            mSprite.Position = new Vector2(125, 245);
+            //mSprite.LoadContent(this.Content, "birdy");
+            //mSprite.Position = new Vector2(125, 245);
 
-            mSpriteTwo.LoadContent(this.Content, "birdy");
-            mSpriteTwo.Position.X = 300;
-            mSpriteTwo.Position.Y = 300;
+            //mSpriteTwo.LoadContent(this.Content, "birdy");
+            //mSpriteTwo.Position.X = 300;
+            //mSpriteTwo.Position.Y = 300;
 
             mBackgroundOne.LoadContent(this.Content, "Background01");
             mBackgroundOne.Position = new Vector2(0, 0);
@@ -143,7 +148,7 @@ namespace AN
                 this.Exit();
 
             // TODO: Add your update logic here
-
+            nerd.Update(gameTime);
 
             if (mBackgroundOne.Position.X < -mBackgroundOne.Size.Width)
             {
@@ -192,6 +197,7 @@ namespace AN
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+            
 
             mBackgroundOne.Draw(this.spriteBatch);
             mBackgroundTwo.Draw(this.spriteBatch);
@@ -199,8 +205,9 @@ namespace AN
             mBackgroundFour.Draw(this.spriteBatch);
             mBackgroundFive.Draw(this.spriteBatch);
 
-            mSprite.Draw(this.spriteBatch);
-            mSpriteTwo.Draw(this.spriteBatch);
+            nerd.Draw(this.spriteBatch);
+            //mSprite.Draw(this.spriteBatch);
+            //mSpriteTwo.Draw(this.spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
