@@ -42,7 +42,7 @@ namespace AN
              * -noemj
              */
             graphics.GraphicsProfile = GraphicsProfile.Reach;
-            fbDeprofiler.DeProfiler.Run();
+            //fbDeprofiler.DeProfiler.Run();
 
         }
 
