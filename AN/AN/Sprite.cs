@@ -46,7 +46,7 @@ class Sprite
         }
     }
 
-    public void Update(GameTime theGameTime, Vector2 theSpeed, Vector2 theDirection)
+    public void Update(GameTime theGameTime, float theSpeed, Vector2 theDirection)
     {
         Position += theDirection * theSpeed * (float)theGameTime.ElapsedGameTime.TotalSeconds;
     }

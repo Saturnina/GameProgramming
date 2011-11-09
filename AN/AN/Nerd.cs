@@ -44,7 +44,7 @@ namespace AN
 
             mPreviousKeyboardState = aCurrentKeyboardState;
 
-            base.Update(theGameTime, mSpeed, mDirection);
+            //base.Update(theGameTime, mSpeed, mDirection);
         }
         private void UpdateMovement(KeyboardState aCurrentKeyboardState)
         {

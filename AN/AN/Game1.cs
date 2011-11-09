@@ -23,7 +23,8 @@ namespace AN
         SpriteBatch spriteBatch;
         //Sprite mSprite;
         //Sprite mSpriteTwo;
-        Nerd nerd;
+        //Nerd nerd;
+        Mousedraggable nerd;
 
         Sprite mBackgroundOne;
         Sprite mBackgroundTwo;
@@ -58,7 +59,9 @@ namespace AN
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            nerd = new Nerd();
+            this.IsMouseVisible = true;
+            //nerd = new Nerd();
+            nerd = new Mousedraggable();
             //mSprite = new Sprite();
             //mSpriteTwo = new Sprite();
 
@@ -99,8 +102,8 @@ namespace AN
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             nerd.LoadContent(this.Content);
-            nerd.Position.X = 300;
-            nerd.Position.Y = 300;
+            //nerd.Position.X = 300;
+            //nerd.Position.Y = 300;
 
             // TODO: use this.Content to load your game content here
             //mSprite.LoadContent(this.Content, "birdy");
