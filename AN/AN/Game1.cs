@@ -18,7 +18,7 @@ namespace AN
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-
+        
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         //Sprite mSprite;
@@ -38,6 +38,8 @@ namespace AN
 
             graphics = new GraphicsDeviceManager(this);
 
+            graphics.PreferredBackBufferWidth = 1200;
+            graphics.PreferredBackBufferHeight = 590;
             Content.RootDirectory = "Content";
             /*
              * ONLY UNCOMMENT THESE IF YOU HAVE FBBDEPROFILER DOWNLOADED, AND IN THE REFERENCES!
@@ -99,6 +101,7 @@ namespace AN
 
         protected override void LoadContent()
         {
+
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             nerd.LoadContent(this.Content);
@@ -160,6 +163,8 @@ namespace AN
             base.Update(gameTime);
         }
 
+        
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -169,8 +174,8 @@ namespace AN
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
             spriteBatch.Begin();
-            
 
             mBackgroundOne.Draw(this.spriteBatch);
             mBackgroundTwo.Draw(this.spriteBatch);
