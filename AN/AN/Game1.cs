@@ -153,39 +153,9 @@ namespace AN
             // TODO: Add your update logic here
             nerd.Update(gameTime);
 
-            if (mBackgroundOne.Position.X < -mBackgroundOne.Size.Width)
-            {
-                mBackgroundOne.Position.X = mBackgroundFive.Position.X + mBackgroundFive.Size.Width;
-            }
-
-            if (mBackgroundTwo.Position.X < -mBackgroundTwo.Size.Width)
-            {
-                mBackgroundTwo.Position.X = mBackgroundOne.Position.X + mBackgroundOne.Size.Width;
-            }
-
-            if (mBackgroundThree.Position.X < -mBackgroundThree.Size.Width)
-            {
-                mBackgroundThree.Position.X = mBackgroundTwo.Position.X + mBackgroundTwo.Size.Width;
-            }
-
-            if (mBackgroundFour.Position.X < -mBackgroundFour.Size.Width)
-            {
-                mBackgroundFour.Position.X = mBackgroundThree.Position.X + mBackgroundThree.Size.Width;
-            }
-
-            if (mBackgroundFive.Position.X < -mBackgroundFive.Size.Width)
-            {
-                mBackgroundFive.Position.X = mBackgroundFour.Position.X + mBackgroundFour.Size.Width;
-            }
-
             Vector2 aDirection = new Vector2(-1, 0);
             Vector2 aSpeed = new Vector2(160, 0);
 
-            mBackgroundOne.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            mBackgroundTwo.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            mBackgroundThree.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            mBackgroundFour.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            mBackgroundFive.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             base.Update(gameTime);
         }
