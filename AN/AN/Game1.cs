@@ -18,13 +18,16 @@ namespace AN
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        
+
+        Camera camera;
+        KeyboardState current;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         //Sprite mSprite;
         //Sprite mSpriteTwo;
         //Nerd nerd;
         Mousedraggable nerd;
+       
 
         Sprite mBackgroundOne;
         Sprite mBackgroundTwo;
@@ -35,7 +38,7 @@ namespace AN
 
         public Game1()
         {
-
+            camera = new Camera();
             graphics = new GraphicsDeviceManager(this);
 
             graphics.PreferredBackBufferWidth = 1200;
@@ -149,9 +152,14 @@ namespace AN
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+
+            current = Keyboard.GetState();
+            Camera.Update(current);
+   
 
             // TODO: Add your update logic here
             nerd.Update(gameTime);
@@ -171,13 +179,32 @@ namespace AN
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            
 
             spriteBatch.Begin();
+            /* FOR THE CAMERA..  Doesnt work yet.
+             * -noemj
+            spriteBatch.Begin(SpriteSortMode.Immediate,
 
-            mBackgroundOne.Draw(this.spriteBatch);
+               BlendState.AlphaBlend,
+
+               null,
+
+               null,
+
+               null,
+
+               null,
+
+               Camera.TransformMatrix());
+
+            spriteBatch.End();
+            spriteBatch.Begin();
+             * */
+            mBackgroundOne.Draw(spriteBatch);
             mBackgroundTwo.Draw(this.spriteBatch);
             mBackgroundThree.Draw(this.spriteBatch);
             mBackgroundFour.Draw(this.spriteBatch);
