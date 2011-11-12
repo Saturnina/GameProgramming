@@ -63,32 +63,30 @@ namespace AN
                     //grab the bullet
                     if (mouseOverLaunchpad)
                     {
-                        draggingBullet = true;
-                        //move the projectile if inside limits
-                        if (Vector2.Distance(mouseLocation, launchPadCoordinates) < 100)
-                        {
-                            bulletLocation = mouseLocation;
-                            Position = bulletLocation;
-                        }                     
+                        draggingBullet = true;                       
                     }
                 }
-                // Mouse left key not being pressed
-
-            //Mouse left key has just been released
-                else if (oldState.LeftButton == ButtonState.Pressed)
-                {
-                    //release the bullet
-                    if (draggingBullet == true)
-                    {
-                        draggingBullet = false;
-                        launchPower = Vector2.Distance(bulletLocation, launchPadCoordinates);
-                        launchAngle = bulletLocation - launchPadCoordinates;
-                    }
-                }
-                // Update saved state.
-                oldState = newState;
             }
-
+            // Mouse left key not being pressed
+            //Mouse left key has just been released
+            else if (oldState.LeftButton == ButtonState.Pressed)
+            {
+                //release the bullet
+                if (draggingBullet == true)
+                {
+                    draggingBullet = false;
+                    launchPower = (Vector2.Distance(bulletLocation, launchPadCoordinates))/5;
+                    launchAngle = -(bulletLocation - launchPadCoordinates);
+                }
+            }
+            //move the projectile if inside limits
+            if (Vector2.Distance(mouseLocation, launchPadCoordinates) < 100 && draggingBullet)
+            {
+                bulletLocation = mouseLocation;
+                Position = bulletLocation;
+            }
+                // Update saved state.                           
+            oldState = newState;
         }
     }
 }
