@@ -41,8 +41,8 @@ namespace AN
             camera = new Camera();
             graphics = new GraphicsDeviceManager(this);
 
-            graphics.PreferredBackBufferWidth = 1200;
-            graphics.PreferredBackBufferHeight = 590;
+            graphics.PreferredBackBufferWidth = 850;
+            graphics.PreferredBackBufferHeight = 650;
             Content.RootDirectory = "Content";
             /*
              * ONLY UNCOMMENT THESE IF YOU HAVE FBBDEPROFILER DOWNLOADED, AND IN THE REFERENCES!
@@ -71,7 +71,7 @@ namespace AN
             //mSpriteTwo = new Sprite();
 
             mBackgroundOne = new Sprite();
-            mBackgroundOne.Scale = 2.0f;
+            mBackgroundOne.Scale = 0.85f;
 
             mBackgroundTwo = new Sprite();
             mBackgroundTwo.Scale = 2.0f;
@@ -119,20 +119,9 @@ namespace AN
             //mSpriteTwo.Position.X = 300;
             //mSpriteTwo.Position.Y = 300;
 
-            mBackgroundOne.LoadContent(this.Content, "Background01");
+            mBackgroundOne.LoadContent(this.Content, "Background");
             mBackgroundOne.Position = new Vector2(0, 0);
 
-            mBackgroundTwo.LoadContent(this.Content, "Background02");
-            mBackgroundTwo.Position = new Vector2(mBackgroundOne.Position.X + mBackgroundOne.Size.Width, 0);
-
-            mBackgroundThree.LoadContent(this.Content, "Background03");
-            mBackgroundThree.Position = new Vector2(mBackgroundTwo.Position.X + mBackgroundTwo.Size.Width, 0);
-
-            mBackgroundFour.LoadContent(this.Content, "Background04");
-            mBackgroundFour.Position = new Vector2(mBackgroundThree.Position.X + mBackgroundThree.Size.Width, 0);
-
-            mBackgroundFive.LoadContent(this.Content, "Background05");
-            mBackgroundFive.Position = new Vector2(mBackgroundFour.Position.X + mBackgroundFour.Size.Width, 0);
 
         }
 
