@@ -190,15 +190,10 @@ namespace AN
             spriteBatch.Begin(SpriteSortMode.Immediate,
 
                BlendState.AlphaBlend,
-
                null,
-
                null,
-
                null,
-
                null,
-
                Camera.TransformMatrix());
 
             spriteBatch.End();
