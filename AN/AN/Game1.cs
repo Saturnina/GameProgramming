@@ -34,6 +34,7 @@ namespace AN
         Sprite mBackgroundThree;
         Sprite mBackgroundFour;
         Sprite mBackgroundFive;
+        Sprite mBackgroundFront;
 
 
         public Game1()
@@ -72,6 +73,9 @@ namespace AN
 
             mBackgroundOne = new Sprite();
             mBackgroundOne.Scale = 0.85f;
+            
+            mBackgroundFront = new Sprite();
+            mBackgroundFront.Scale = 0.83f;
 
             mBackgroundTwo = new Sprite();
             mBackgroundTwo.Scale = 2.0f;
@@ -121,6 +125,8 @@ namespace AN
 
             mBackgroundOne.LoadContent(this.Content, "Background");
             mBackgroundOne.Position = new Vector2(0, 0);
+            mBackgroundFront.LoadContent(this.Content, "backgroundFront_3");
+            mBackgroundFront.Position = new Vector2(0, 0);
 
 
         }
@@ -192,6 +198,7 @@ namespace AN
             mBackgroundTwo.Draw(this.spriteBatch);
 
             nerd.Draw(this.spriteBatch);
+            mBackgroundFront.Draw(this.spriteBatch);
             //mSprite.Draw(this.spriteBatch);
             //mSpriteTwo.Draw(this.spriteBatch);
             spriteBatch.End();
