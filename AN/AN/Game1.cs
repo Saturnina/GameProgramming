@@ -27,7 +27,7 @@ namespace AN
         //Sprite mSpriteTwo;
         //Nerd nerd;
         Mousedraggable nerd;
-       
+
 
         Sprite mBackgroundOne;
         Sprite mBackgroundTwo;
@@ -89,7 +89,7 @@ namespace AN
         }
 
 
-       
+
 
         // Set the coordinates to draw the sprite at.
         Vector2 spritePosition = Vector2.Zero;
@@ -148,7 +148,7 @@ namespace AN
 
             current = Keyboard.GetState();
             Camera.Update(current);
-   
+
 
             // TODO: Add your update logic here
             nerd.Update(gameTime);
@@ -160,7 +160,7 @@ namespace AN
             base.Update(gameTime);
         }
 
-        
+
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -168,10 +168,10 @@ namespace AN
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            
+
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            
+
 
             spriteBatch.Begin();
             /* FOR THE CAMERA..  Doesnt work yet.
@@ -190,9 +190,6 @@ namespace AN
              * */
             mBackgroundOne.Draw(spriteBatch);
             mBackgroundTwo.Draw(this.spriteBatch);
-            mBackgroundThree.Draw(this.spriteBatch);
-            mBackgroundFour.Draw(this.spriteBatch);
-            mBackgroundFive.Draw(this.spriteBatch);
 
             nerd.Draw(this.spriteBatch);
             //mSprite.Draw(this.spriteBatch);
